@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.AdvInfoMapper">
+   
+   
+   <resultMap type="AdvInfo" id="advmap">
+      <result property="id" column="id"/>
+      <result property="advname" column="advname"/>
+      <result property="advurl" column="advurl"/>
+      <result property="advmoney" column="advmoney"/>
+      <result property="time" column="time"/>
+      <result property="sort" column="sort"/>
+   </resultMap>
+   
+   
+   <select id="getAllAdv" resultMap="advmap">
+        select * from adv;
+   
+   </select>
+   
+      <select id="getSortAdv" resultMap="advmap">
+        select * from adv order by sort;
+   
+   </select>
+   
+   
+    <select id="deleteAllAdv" resultMap="advmap">
+    
+        truncate table adv;
+   
+   </select>
+   
+   
+    <insert id="addAdv" parameterType="AdvInfo">
+      insert into adv(id,advname,advurl,advmoney,time,sort) values(#{id},#{advname},#{advurl},#{advmoney},#{time},#{sort})
+   </insert>
+   
+  
+ 
+  
+   
+</mapper>

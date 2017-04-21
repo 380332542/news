@@ -1,0 +1,39 @@
+ *{
+            margin: 0;
+            padding: 0;
+        }
+        #main{
+            width: 600px;
+            height: 350px;
+            margin: 1px auto;
+            position: relative;
+        
+        }
+        #main .scollimg{
+            width: 600px;
+            height: 350px;
+            position: relative;
+        }
+        #main .scollimg img{
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        #main .item{
+            position: absolute;
+            bottom: 20px;
+            left: 260px;
+            width: 200px;
+            height: 10px;
+        }
+        #main .item span{
+            width: 16px;
+            height: 16px;
+            background: #ccc;
+            display: inline-block;
+            border-radius: 50%;
+        }
+        #main .item span:hover{
+            cursor: pointer;
+        }
