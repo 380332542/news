@@ -46,7 +46,7 @@ PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
    
    
    <select id="getNewsByTitleFullText" parameterType="NewsInfo" resultMap="newsmap">
-     SELECT * FROM news WHERE MATCH(pinyinma) AGAINST(#{pinyinma});
+     SELECT * FROM news WHERE MATCH(news_content) AGAINST(#{pinyinma});
    
    </select>
    

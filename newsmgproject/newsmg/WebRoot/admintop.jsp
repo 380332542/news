@@ -29,7 +29,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		   	<ul class="nav navbar-nav" >
 		   			<li><a href="advinfo/advmanage.do">轮播广告</a></li>
 		   			
-		   			<li><a href="advinfo2/advmanage2.do">对联广告</a></li>
+		   			<li><a href="advinfo2/advmanage2.do">普通广告</a></li>
 		   			
 		   			
 		   			

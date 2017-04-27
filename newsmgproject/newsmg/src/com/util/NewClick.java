@@ -18,9 +18,7 @@ public class NewClick {
 	
 	public int getNewsClickNum(int newsid)
 	{
-		
-		
-		System.out.println("是否存在news_"+newsid+"这个key?"+js.exists("news_"+newsid));
+	
 		
 		
 		if(js.exists("news_"+newsid))
@@ -49,12 +47,7 @@ public class NewClick {
 			//查询数据库，获取点击次数
 			int oldCount=newInfoMapper.getNewsClickNum(newsid);
 			System.out.println("查询到"+newsid+"点击数:"+newsid);
-			System.out.println("查询到"+newsid+"点击数:"+newsid);
-			System.out.println("查询到"+newsid+"点击数:"+newsid);
-			System.out.println("查询到"+newsid+"点击数:"+newsid);
-			System.out.println("查询到"+newsid+"点击数:"+newsid);
-			System.out.println("查询到"+newsid+"点击数:"+newsid);
-			System.out.println("查询到"+newsid+"点击数:"+newsid);
+
 			
 			//放入到redis
 			js.set("news_"+newsid, oldCount+","+1);

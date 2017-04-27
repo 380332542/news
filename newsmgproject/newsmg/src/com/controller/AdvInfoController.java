@@ -59,10 +59,6 @@ public class AdvInfoController {
 			b.setAdvmoney(Integer.parseInt( (String) jsonOne.get("advmoney")));
 			b.setTime(Integer.parseInt( (String) jsonOne.get("time")));
 			b.setSort(Integer.parseInt( (String) jsonOne.get("sort")));
-			
-			//b.setAdvmoney((Integer) jsonOne.get("advmoney"));
-			//b.setTime((Integer) jsonOne.get("time"));
-			//b.setSort((Integer) jsonOne.get("sort"));
 			advInfoMapper.addAdv(b);	 							
 			} 
 
