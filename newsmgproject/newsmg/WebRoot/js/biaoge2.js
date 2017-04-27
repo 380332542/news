@@ -170,8 +170,6 @@ function GetRowData(row) {
             rowData[name] = value;  
         }  
     }  
-    //alert("ProductName:" + rowData.ProductName);  
-    //alert("ProductName:" + rowData["ProductName"]);  
     return rowData;  
   
 }  
