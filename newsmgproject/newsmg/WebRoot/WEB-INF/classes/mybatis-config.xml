@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+     <typeAliases>
+       
+       <typeAlias type="com.po.UserInfo" alias="UserInfo"/>
+       <typeAlias type="com.po.NewsInfo" alias="NewsInfo"/>
+       <typeAlias type="com.po.AdvInfo" alias="AdvInfo"/>
+       <typeAlias type="com.po.AdvInfo2" alias="AdvInfo2"/>
+     </typeAliases>
+
+     <mappers>
+       
+     </mappers>
+    
+</configuration>
