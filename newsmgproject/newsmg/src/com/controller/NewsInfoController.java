@@ -59,49 +59,32 @@ public class NewsInfoController {
 			{
 				list = newsInfoMapper.getNewsByPage(news);
 				mc.set("first_page", 60*60*24, list);
-			}
-			
-			
-			
+			}		
 		}
 		else
 		{
 			 list = newsInfoMapper.getNewsByPage(news);
-		}
-		
-		
-	   
+		}   
 		model.addAttribute("newslist", list);
 		model.addAttribute("currentPage",1);
 		model.addAttribute("totalPage",news.getTotalPage());
 		model.addAttribute("adv", list2);
 		model.addAttribute("adv2", list3);
 		model.addAttribute("url", "newsinfo/page.do");
-		System.out.println("list是："+list);
-		System.out.println("list2是："+list2);
-		System.out.println("list3是："+list3);
 		
 		return "newslist";
 	}
 	
 	@RequestMapping("page.do")
 	public String page(NewsInfo news,Model model) throws Exception
-	{
-		
-		
+	{		
 		List<NewsInfo> list;
-		MemcachedClient mc=new MemcachedClient(AddrUtil.getAddresses("127.0.0.1:11211"));
-		
-		news.setTotalRow(newsInfoMapper.getTotal());
-		
-		System.out.println("currentpage:"+news.getCurrentPage());;
-		
-		List<AdvInfo> list2=advInfoMapper.getSortAdv();
-		
+		MemcachedClient mc=new MemcachedClient(AddrUtil.getAddresses("127.0.0.1:11211"));	
+		news.setTotalRow(newsInfoMapper.getTotal());	
+		List<AdvInfo> list2=advInfoMapper.getSortAdv();	
 		if(news.getCurrentPage()==1)
 		{
 			list=(List)mc.get("first_page");
-			
 			if(list==null)
 			{
 				list = newsInfoMapper.getNewsByPage(news);
@@ -111,30 +94,22 @@ public class NewsInfoController {
 		else
 		{
 			 list = newsInfoMapper.getNewsByPage(news);
-		}
-		
+		}		
 		model.addAttribute("newslist", list);
 		model.addAttribute("currentPage",news.getCurrentPage());
 		model.addAttribute("totalPage",news.getTotalPage());
 		model.addAttribute("adv", list2);
-		model.addAttribute("url", "newsinfo/page.do");
-		
+		model.addAttribute("url", "newsinfo/page.do");		
 		return "newslist";
 	}
 	
 	@RequestMapping("detail.do")
 	public String newsDetail(int newsid,Model model) throws Exception
-	{
-		
-		
-		MemcachedClient mc=new MemcachedClient(AddrUtil.getAddresses("127.0.0.1:11211"));
-		
-		
-		
+	{		
+		MemcachedClient mc=new MemcachedClient(AddrUtil.getAddresses("127.0.0.1:11211"));		
 		NewsInfo news =(NewsInfo) mc.get("newDetail_"+newsid);
 		
-		//第一次到数据库读取，放入缓存
-		//后面就直接从缓存中取
+		//第一次到数据库读取，放入缓存，之后从缓存中读取
 		if(news==null)
 		{
 			news=newsInfoMapper.getNewsDetail(newsid);
@@ -142,7 +117,7 @@ public class NewsInfoController {
 			
 		}
 		
-		//从redis缓存获取点击次数
+		//从缓存中获取点击次数
 		NewClick nc = new NewClick(newsInfoMapper);
 		int clickNum=nc.getNewsClickNum(newsid);
 		nc.close();
@@ -151,20 +126,4 @@ public class NewsInfoController {
 		model.addAttribute("clickNum",clickNum);
 		return "newsdetail";
 	}
-	
-	@RequestMapping("keywordsquery.do")
-	public String keyWordsQuery(String keyword) throws Exception{
-		
-		PinyinTool tool = new PinyinTool();
-		String pinyin = tool.toPinYin(keyword, " ", PinyinTool.Type.LOWERCASE);
-		NewsInfo news =new NewsInfo();
-		news.setPinyinma(pinyin);
-		List<NewsInfo > list = newsInfoMapper.getNewsByTitleFullText(news);
-		System.out.println(list);
-		return "fulltext";
-	}
-	
-	
-	
-
 }

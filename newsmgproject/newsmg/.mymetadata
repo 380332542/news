@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project-module
   type="WEB"
-  name="newsmg"
+  name="newsrelease"
   id="myeclipse.1488762012672"
   context-root="/newsmg"
   j2ee-spec="5.0"
-  archive="newsmg.war">
+  archive="newsrelease.war">
   <attributes>
     <attribute name="webrootdir" value="WebRoot" />
   </attributes>

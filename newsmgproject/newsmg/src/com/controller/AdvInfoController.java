@@ -6,8 +6,6 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-
-
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 
@@ -41,15 +39,10 @@ public class AdvInfoController {
 	public @ResponseBody String submit(HttpServletRequest request){
 		
 		String ds = request.getParameter("ds");
-
-		List<AdvInfo> list= advInfoMapper.deleteAllAdv();
-		
+		List<AdvInfo> list= advInfoMapper.deleteAllAdv();		
 		JSONArray json=JSONArray.fromObject(ds);
-
 		JSONObject jsonOne;
 		int size = json.size();
-		System.out.println(size);
-		
 		AdvInfo b=new AdvInfo();
 		for (int i = 0; i < size; i++) {
 			jsonOne = json.getJSONObject(i); 
@@ -61,11 +54,6 @@ public class AdvInfoController {
 			b.setSort(Integer.parseInt( (String) jsonOne.get("sort")));
 			advInfoMapper.addAdv(b);	 							
 			} 
-
-	return "1";
-		
+	return "1";		
 	}
-
-
-
 }
