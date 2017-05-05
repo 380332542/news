@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+"http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.mapper.UserInfoMapper">
+   
+   
+   <resultMap type="UserInfo" id="usermap">
+      <result property="userId" column="userid"/>
+      <result property="userName" column="username"/>
+      <result property="pwd" column="pwd"/>
+      <result property="email" column="email"/>
+      <result property="phone" column="phone"/>
+   </resultMap>
+   
+   
+   <select id="getAllUser" resultMap="usermap">
+        select * from users;
+   </select>
+  
+   
+   <select id="getUserByNameAndPwd" parameterType="UserInfo" resultMap="usermap">
+   
+       select * from users where username=#{userName} and pwd=#{pwd}
+   </select>
+   
+    <select id="getUserByName" parameterType="UserInfo" resultMap="usermap">
+   
+       select * from users where username=#{userName}
+   </select>
+   
+   
+   
+   <select id="getUserByPage" parameterType="UserInfo" resultMap="usermap">
+       select * from users limit #{start},#{pageSize}
+   </select>
+   
+   
+   <select id="getCount" resultType="int">
+       select count(*) from users
+   </select>
+   
+   
+   <insert id="addUser" parameterType="UserInfo">
+   
+      insert into users(username,pwd,email,phone) values(#{userName},#{pwd},#{email},#{phone})
+   </insert>
+ 
+  
+   
+</mapper>
