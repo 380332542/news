@@ -43,7 +43,7 @@ public class AdvInfo2Controller {
 		String ds = request.getParameter("ds");
 
 		List<AdvInfo2> list= advInfo2Mapper.deleteAllAdv2();
-		
+		//System.out.println("成功运行到这里");
 		JSONArray json=JSONArray.fromObject(ds);
 
 		JSONObject jsonOne;
