@@ -18,6 +18,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
  </head>
  <body>
+ a
    <nav class="nav navbar-inverse  " style="filter:alpha(Opacity=90);" role="navigation">
    	<div class="container" style="z-index: 999">
 	   		<div class="navbar-header">
